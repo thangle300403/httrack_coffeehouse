@@ -1,0 +1,99 @@
+      <section class="home-collectiontabs">
+        <div class="container text-float__container">
+          <div class="subtitle">FEATURED PRODUCT hihihi</div>
+          <h2>“NHÀ” COLLECTION</h2>
+          <div class="text-float__img-container" rotate-float="true">
+            <div class="float-image-wrapper mobile" style="
+                    --width: 150px;
+                    --pos-x: 10%;
+                    --pos-y: 0%;
+                    --width-mb: 60px;
+                    --pos-x-mb: 5%;
+                    --pos-y-mb: 0%;
+                    --pos-z: 10;
+                ">
+              <img class="float-image" height="auto" width="150" src="file.hstatic.net/1000075078/file/sticker-collectiontabs.png" alt="Tìm nhà gần bạn" />
+            </div>
+          </div>
+          <div class="tabs-product">
+
+            <div class="tabs-product-head">
+              <% categories.forEach((category, index) => { %>
+              <div class="tab-item <%= index === 0 ? 'active' : '' %>" data-handle="<%= category.slug %>" data-category-id="<%= category.id %>">
+
+                <%= category.name %>
+                <span><%= category.products?.length || 0 %></span>
+
+              </div>
+              <% }) %>
+            </div>
+
+            <div class="tabs-product-body js-tab">
+              <div class="tab-product-slider home-slide">
+                <div class="swiper">
+                  <div class="swiper-wrapper" id="featured-products-wrapper">
+
+                    <% const initialProducts = categories?.[0]?.products || []; %>
+                    <% if (initialProducts.length > 0) { %>
+                    <% initialProducts.forEach((product) => { %>
+                    <div class="swiper-slide">
+                      <div class="product-inner" data-handle="/products/<%= product.slug %>">
+                        <div class="product-image effect-image">
+                          <a class="icon-quickview" data-handle="/products/<%= product.slug %>" href="/products/<%= product.slug %>.html">
+                            <img src="/images/<%= product.image %>" alt="<%= product.name %>" />
+                          </a>
+                        </div>
+                        <div class="product-info">
+                          <div class="product-type"><%= categories?.[0]?.name || '' %></div>
+                          <h3>
+                            <a class="icon-quickview" data-handle="/products/<%= product.slug %>" href="/products/<%= product.slug %>.html"><%= product.name %></a>
+                          </h3>
+                          <div class="product-price"><%= Number(product.price || 0).toLocaleString('vi-VN') %> đ</div>
+                        </div>
+                      </div>
+                    </div>
+                    <% }) %>
+                    <% } else { %>
+                    <div class="swiper-slide">
+                      <div class="product-inner">
+                        <div class="product-info">
+                          <h3>Không có sản phẩm</h3>
+                        </div>
+                      </div>
+                    </div>
+                    <% } %>
+
+                  </div>
+                </div>
+                <!-- If we need navigation buttons -->
+                <div class="home-slide-button home-slide-button-prev collectiontabs-prev">
+                  <svg width="23" height="23" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7.37175 1.14954C7.71889 0.802499 8.28141 0.802442 8.62852 1.14955C8.97562 1.49665 8.97556 2.05918 8.62852 2.40632L7.37175 1.14954ZM1.14935 8.62871C0.802245 8.28161 0.802303 7.71908 1.14935 7.37194L7.37175 1.14954L8.62852 2.40632L3.92331 7.11152L14.2223 7.11152C14.7131 7.11153 15.1112 7.50923 15.1113 8.00007C15.1113 8.49099 14.7132 8.88913 14.2223 8.88913L3.92331 8.88913L8.62852 13.5938L7.37174 14.8511L1.14935 8.62871ZM8.62852 14.8511C8.28143 15.1981 7.71886 15.198 7.37174 14.8511L8.62852 13.5938C8.97565 13.9409 8.97565 14.504 8.62852 14.8511Z" fill="black" />
+                  </svg>
+                </div>
+                <div class="home-slide-button home-slide-button-next collectiontabs-next">
+                  <svg width="23" height="23" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8.62825 1.14954C8.28111 0.802499 7.71859 0.802442 7.37148 1.14955C7.02438 1.49665 7.02444 2.05918 7.37148 2.40632L8.62825 1.14954ZM14.8507 8.62871C15.1978 8.28161 15.1977 7.71908 14.8507 7.37194L8.62825 1.14954L7.37148 2.40632L12.0767 7.11152L1.77773 7.11152C1.28687 7.11153 0.888765 7.50923 0.888671 8.00007C0.888671 8.49099 1.28681 8.88913 1.77773 8.88913L12.0767 8.88913L7.37148 13.5938L8.62826 14.8511L14.8507 8.62871ZM7.37148 14.8511C7.71857 15.1981 8.28114 15.198 8.62826 14.8511L7.37148 13.5938C7.02435 13.9409 7.02435 14.504 7.37148 14.8511Z" fill="black" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="tabs-product-viewmore">
+              <a href="collections/ca-phe-1.html">
+                <span>XEM THÊM</span>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g clip-path="url(#clip0_360_8589)">
+                    <path d="M3.8457 20.8453C3.19482 21.496 2.14008 21.4962 1.48926 20.8453C0.838438 20.1945 0.838547 19.1398 1.48926 18.4889L3.8457 20.8453ZM15.5127 6.8219C16.1635 7.47271 16.1634 8.52745 15.5127 9.17834L3.8457 20.8453L1.48926 18.4889L10.3115 9.66662H-8.99902C-9.91939 9.66662 -10.6658 8.92093 -10.666 8.00061C-10.666 7.08013 -9.9195 6.33361 -8.99902 6.33361H10.3115L1.48926 -2.48767L3.8457 -4.8451L15.5127 6.8219ZM1.48926 -4.8451C2.14004 -5.4957 3.19486 -5.49559 3.8457 -4.8451L1.48926 -2.48767C0.838384 -3.13855 0.838384 -4.19422 1.48926 -4.8451Z" fill="black" />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_360_8589">
+                      <rect width="16" height="16" fill="white" />
+                    </clipPath>
+                  </defs>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+        <script src="/js/featured-products-tabs.js"></script>
+      </section>
